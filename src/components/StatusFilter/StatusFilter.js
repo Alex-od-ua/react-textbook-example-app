@@ -1,15 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setStatusFilter } from 'redux/actions';
-import { statusFilters } from 'redux/constants';
-
 import { Button } from 'components/Button/Button';
+import { statusFilters } from 'redux/constants';
+import { getTasksstatusFilter } from 'redux/selectors';
+import { setStatusFilter } from 'redux/filtersSlice';
 import css from './StatusFilter.module.css';
-
 export const StatusFilter = () => {
   // Получаем ссылку на функцию отправки экшенов
   const dispatch = useDispatch();
 
-  const filter = useSelector(state => state.filters.status);
+  const filter = useSelector(getTasksstatusFilter);
 
   // Вызываем генератор экшена и передаём значение фильтра
   // Отправляем результат - экшен изменения фильтра
